@@ -1,1 +1,15 @@
-albumArt( 'Orange Dumpling', {album: 'The Beginning', size: 'large'} ).then( console.log)
+/**
+ * The function for getting the album art data
+ * @param  {string} Artist The name of the artist
+ * @param  {string} Album The name of the album
+ */
+// DONE: Make the function display the album artwork returned as <img> tags.
+async function createAlbumArtDiv(artist, album) {
+    albumArt( artist, {album: album, size: 'medium'} ).then( imgUrl => {
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        img.src = imgUrl;
+        div.append(img);
+        document.body.append(div);
+    });
+}
