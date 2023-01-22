@@ -1,0 +1,1 @@
+albumArt( 'Orange Dumpling', {album: 'The Beginning', size: 'large'} ).then( console.log)
