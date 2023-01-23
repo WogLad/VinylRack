@@ -13,3 +13,15 @@ async function createAlbumArtDiv(artist, album) {
         document.body.append(div);
     });
 }
+
+var artistNameDiv =  document.getElementById("artistName");
+var albumNameDiv =  document.getElementById("albumName");
+
+document.getElementById("getImageButton").onclick = () => {
+    if (artistNameDiv.value == "" || albumNameDiv.value == "") {
+        alert("Enter the artist and album name in the input fields.");
+        return;
+    }
+
+    createAlbumArtDiv(artistNameDiv.value, albumNameDiv.value);
+}
