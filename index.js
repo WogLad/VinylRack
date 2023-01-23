@@ -1,3 +1,5 @@
+var albumCounter = 0;
+
 /**
  * The function for getting the album art data
  * @param  {string} Artist The name of the artist
@@ -6,11 +8,19 @@
 // DONE: Make the function display the album artwork returned as <img> tags.
 async function createAlbumArtDiv(artist, album) {
     albumArt( artist, {album: album, size: 'medium'} ).then( imgUrl => {
-        var div = document.createElement("div");
-        var img = document.createElement("img");
+        var img = document.getElementById(`img${albumCounter}`);
         img.src = imgUrl;
-        div.append(img);
-        document.body.append(div);
+        img.alt = `${artist} - ${album}`;
+        albumCounter++;
+
+        if (albumCounter == 4) {
+            document.getElementById("rack").style.position = "fixed";
+            document.getElementById("rack").style.bottom = "25%";
+            document.getElementById("rack").style.top = "25%";
+            
+            document.getElementById("form").remove();
+            alert("You have successfully created the artwork. Now you can take a screenshot to save your creation.\n\nWARNING: The creation will be lost once you leave the page!");
+        }
     });
 }
 
